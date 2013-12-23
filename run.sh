@@ -20,9 +20,9 @@ IFS=","
 while read target user password
 do
 	echo ""
-	echo "Copying /root/vncpasswdExpect.sh to $target@/root/vncpasswdExpect.sh .."
-	result=$(sshpass -p "$password" scp -o ConnectTimeout=1 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no /root/vncpasswdExpect.sh "$user"@"$target":/root/vncpasswdExpect.sh)
-	echo "Copied /root/vncpasswdExpect.sh to $target@/root/vncpasswdExpect.sh"
+	echo "Copying /home/rob/git/bulk-vncpasswd/expect/vncpasswd.sh to $target@/root/vncpasswdExpect.sh .."
+	result=$(sshpass -p "$password" scp -o ConnectTimeout=1 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no /home/rob/git/bulk-vncpasswd/expect/vncpasswd.sh "$user"@"$target":/root/vncpasswdExpect.sh)
+	echo "Copied /home/rob/git/bulk-vncpasswd/expect/vncpasswd.sh to $target@/root/vncpasswdExpect.sh"
 
 	echo "Running /root/vncpasswdExpect.sh on $target as $user .."
         result=$(sshpass -p "$password" ssh -o ConnectTimeout=1 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -n "$user"@"$target" /root/vncpasswdExpect.sh "$newPassword" 2>/dev/null)
